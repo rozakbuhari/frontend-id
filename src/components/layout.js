@@ -17,17 +17,12 @@ export default ({ children, location }) => (
         cosmicjsSettings(slug: { eq: "general" }) {
           metadata {
             site_heading
-            homepage_hero {
-              imgix_url
-            }
           }
         }
       }
     `}
     render={data => {
       const siteTitle = data.cosmicjsSettings.metadata.site_heading
-      const homgePageHero =
-        data.cosmicjsSettings.metadata.homepage_hero.imgix_url
       let header
 
       let rootPath = `/`
@@ -41,12 +36,11 @@ export default ({ children, location }) => (
         header = (
           <div
             style={{
-              backgroundColor: '#007ACC',
-              backgroundImage: `url("${homgePageHero}?w=2000")`,
+              backgroundColor: '#ffffff',
               backgroundSize: 'cover',
               backgroundPosition: 'right',
               width: '100%',
-              height: rhythm(14),
+              height: rhythm(7),
               position: 'relative',
               marginBottom: `${rhythm(1.5)}`,
             }}
@@ -116,51 +110,6 @@ export default ({ children, location }) => (
           >
             {children}
           </div>
-          <footer
-            style={{
-              textAlign: 'center',
-              padding: `0 20px 80px 0`,
-            }}
-          >
-            powered by&nbsp;
-            <a
-              target="_blank"
-              href="https://gatsbyjs.org"
-              style={{
-                color: '#191919',
-                boxShadow: 'none',
-              }}
-            >
-              <img
-                src={gatsbyLogo}
-                alt="Gatsby JS"
-                style={{
-                  width: '20px',
-                  margin: '0 4px -3px 2px',
-                }}
-              />
-              <strong>Gatsby</strong>
-            </a>
-            &nbsp;and&nbsp;
-            <a
-              target="_blank"
-              href="https://cosmicjs.com"
-              style={{
-                color: '#191919',
-                boxShadow: 'none',
-              }}
-            >
-              <img
-                src={cosmicjsLogo}
-                alt="Cosmic JS"
-                style={{
-                  width: '18px',
-                  margin: '0 4px -2px 5px',
-                }}
-              />
-              <strong>Cosmic JS</strong>
-            </a>
-          </footer>
         </div>
       )
     }}
