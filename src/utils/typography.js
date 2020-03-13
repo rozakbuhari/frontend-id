@@ -1,21 +1,31 @@
-import Typography from 'typography'
-import Wordpress2012 from 'typography-theme-wordpress-2012'
+import Typography from 'typography';
+import Wordpress2012 from 'typography-theme-wordpress-2012';
 
 Wordpress2012.overrideThemeStyles = () => ({
   'a.gatsby-resp-image-link': {
     boxShadow: 'none',
   },
-})
+  a: {
+    color: "#ffffff",
+    textDecoration: 'none'
+  },
+  "a:hover": {
+    color: "#ffffff"
+  },
+  "a:visited": {
+    color: "#6F7785"
+  }
+});
 
-delete Wordpress2012.googleFonts
+delete Wordpress2012.googleFonts;
 
-const typography = new Typography(Wordpress2012)
+const typography = new Typography(Wordpress2012);
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== 'production') {
-  typography.injectStyles()
+  typography.injectStyles();
 }
 
-export default typography
-export const rhythm = typography.rhythm
-export const scale = typography.scale
+export default typography;
+export const rhythm = typography.rhythm;
+export const scale = typography.scale;

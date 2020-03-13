@@ -1,5 +1,6 @@
-import React from 'react'
-import { rhythm } from '../utils/typography'
+import React from 'react';
+import { rhythm } from '../utils/typography';
+import { css } from '@emotion/core';
 
 export default ({ settings }) => (
   <div
@@ -16,9 +17,14 @@ export default ({ settings }) => (
         marginBottom: 0,
         width: rhythm(2),
         height: rhythm(2),
-        borderRadius: rhythm(1)
+        borderRadius: rhythm(1),
       }}
     />
-    <div dangerouslySetInnerHTML={{ __html: settings.author_bio }} />
+    <div
+      css={css`
+        max-width: 300px;
+      `}
+      dangerouslySetInnerHTML={{ __html: settings.author_bio }}
+    />
   </div>
-)
+);

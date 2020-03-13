@@ -1,14 +1,8 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import { StaticQuery, graphql } from 'gatsby'
-
-import cosmicjsLogo from '../../static/cosmicjs.svg'
-import gatsbyLogo from '../../static/gatsby.png'
-import { rhythm, scale } from '../utils/typography'
-
-// Import typefaces
-import 'typeface-montserrat'
-import 'typeface-merriweather'
+import React from 'react';
+import { Link } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
+import { rhythm, scale } from '../utils/typography';
+import { css } from '@emotion/core';
 
 export default ({ children, location }) => (
   <StaticQuery
@@ -22,21 +16,20 @@ export default ({ children, location }) => (
       }
     `}
     render={data => {
-      const siteTitle = data.cosmicjsSettings.metadata.site_heading
-      let header
+      const siteTitle = data.cosmicjsSettings.metadata.site_heading;
+      let header;
 
-      let rootPath = `/`
-      let postsPath = `/posts`
+      let rootPath = `/`;
+      let postsPath = `/posts`;
       if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
-        rootPath = __PATH_PREFIX__ + `/`
-        postsPath = __PATH_PREFIX__ + `/posts`
+        rootPath = __PATH_PREFIX__ + `/`;
+        postsPath = __PATH_PREFIX__ + `/posts`;
       }
 
       if (location.pathname === rootPath || location.pathname === postsPath) {
         header = (
           <div
             style={{
-              backgroundColor: '#ffffff',
               backgroundSize: 'cover',
               backgroundPosition: 'right',
               width: '100%',
@@ -69,12 +62,11 @@ export default ({ children, location }) => (
               </Link>
             </h1>
           </div>
-        )
+        );
       } else {
         header = (
           <h3
             style={{
-              fontFamily: 'Montserrat, sans-serif',
               marginTop: 0,
               marginBottom: rhythm(-1),
               marginLeft: 'auto',
@@ -94,16 +86,26 @@ export default ({ children, location }) => (
               {siteTitle}
             </Link>
           </h3>
-        )
+        );
       }
       return (
-        <div>
+        <div
+          css={css`
+            color: #6f7785;
+            background: rgb(41, 43, 48);
+            background: linear-gradient(
+              135deg,
+              rgba(41, 43, 48, 1) 0%,
+              rgba(23, 25, 29, 1) 100%
+            );
+          `}
+        >
           {header}
           <div
             style={{
               marginLeft: 'auto',
               marginRight: 'auto',
-              maxWidth: rhythm(24),
+              maxWidth: rhythm(36),
               padding: `0 ${rhythm(3 / 4)} ${rhythm(1.5)} ${rhythm(3 / 4)}`,
               minHeight: 'calc(100vh - 42px)',
             }}
@@ -111,7 +113,7 @@ export default ({ children, location }) => (
             {children}
           </div>
         </div>
-      )
+      );
     }}
   />
-)
+);
